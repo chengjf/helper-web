@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Json Format</title>
+    <script src="https://code.jquery.com/jquery-3.4.0.min.js"></script>
+    <style>
+        textarea {
+            width: 100%;
+            height: auto;
+            min-width: 500px;
+            max-width: 100%;
+            min-height: 200px;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <form>
+            <textarea id="input"></textarea>
+            <input type="submit" value="SUBMIT">
+        </form>
+        <textarea id="result"></textarea>
+    </div>
+    <script>
+
+        $("form").submit(function (event) {
+            event.preventDefault();
+            console.log("submit");
+
+            $.ajax({
+                type: "POST",
+                url: "/api/json_format",
+                data: { "input": $('#input').val() },
+                success: function (data) {
+                    console.log(data);
+                    $('#result').val(data);
+                },
+                dataType: 'json'
+            });
+        });
+    </script>
+</body>
+
+</html>
