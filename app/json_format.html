@@ -30,17 +30,17 @@
 
         $("form").submit(function (event) {
             event.preventDefault();
-            console.log("submit");
 
             $.ajax({
                 type: "POST",
                 url: "/api/json-format",
-                data: { "input": $('#input').val() },
+                data: JSON.stringify({ "input": $('#input').val() }),
                 success: function (data) {
                     console.log(data);
-                    $('#result').val(data);
+                    $('#result').val(data.message);
                 },
-                dataType: 'json'
+                dataType: 'json',
+                contentType: "application/json",
             });
         });
     </script>
