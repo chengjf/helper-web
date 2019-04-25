@@ -7,25 +7,33 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>MD5</title>
     <script src="https://code.jquery.com/jquery-3.4.0.min.js"></script>
+    <style>
+        .input {
+            width: 50%;
+            height: auto;
+            min-width: 500px;
+            max-width: 100%;
+        }
+    </style>
 </head>
 
 <body>
 
     <div>
-        <input type="text" id="input">
+        <input type="text" id="input" class="input">
         <br />
         <input type="number" id="count">
         <br />
         <input type="submit" value="SUBMIT" id="submit">
         <br />
-        <input type="text" id="result">
+        <input type="text" id="result" class="input">
     </div>
     <script>
         $("#submit").click(function (event) {
             event.preventDefault();
             $.ajax({
                 type: "POST",
-                url: "https://helper.chengjf.com/api/md5",
+                url: "/api/md5",
                 data: JSON.stringify({ "input": $('#input').val(), "count": parseInt($('#count').val(), 10) }),
                 success: function (data) {
                     console.log(data);
