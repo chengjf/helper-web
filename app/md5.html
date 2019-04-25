@@ -26,7 +26,7 @@
             $.ajax({
                 type: "POST",
                 url: "https://helper.chengjf.com/api/md5",
-                data: JSON.stringify({ "input": $('#input').val(), "count": $('#count').val() }),
+                data: JSON.stringify({ "input": $('#input').val(), "count": parseInt($('#count').val(), 10) }),
                 success: function (data) {
                     console.log(data);
                     $('#result').val(data.result);
