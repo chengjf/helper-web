@@ -1,12 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>MD5</title>
+    <script src="https://code.jquery.com/jquery-3.4.0.min.js"></script>
 </head>
+
 <body>
-    
+
+    <div>
+        <input type="text" id="input">
+        <br />
+        <input type="number" id="count">
+        <br />
+        <input type="submit" value="SUBMIT" id="submit">
+        <br />
+        <input type="text" id="result">
+    </div>
+    <script>
+        $("#submit").click(function (event) {
+            event.preventDefault();
+            $.ajax({
+                type: "POST",
+                url: "https://helper.chengjf.com/api/md5",
+                data: JSON.stringify({ "input": $('#input').val(), "count": $('#count').val() }),
+                success: function (data) {
+                    console.log(data);
+                    $('#result').val(data.result);
+                },
+                dataType: 'json',
+                contentType: "application/json",
+            });
+        });
+    </script>
 </body>
+
 </html>
