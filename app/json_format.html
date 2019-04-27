@@ -39,6 +39,11 @@
                     console.log(data);
                     $('#result').val(data.message);
                 },
+                error: function (data){
+                    console.log(data);
+                    $('#result').val("");
+                    alert(data.responseText);
+                },
                 dataType: 'json',
                 contentType: "application/json",
             });
