@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>motan</title>
+    <script src="https://code.jquery.com/jquery-3.4.0.min.js"></script>
+    <style>
+        .input {
+            width: 50%;
+            height: auto;
+            min-width: 500px;
+            max-width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <select name="select_projects" id="method">
+        <option value="">请选择</option>
+        <optgroup label="room">
+            <option value="com.uxin.zb.room.service.RoomService.queryById(roomId)">
+                com.uxin.zb.room.service.RoomService.queryById
+            </option>
+        </optgroup>
+        <optgroup label="user">
+            <option value="com.uxin.zb.user.service.UserService.getUserInfoById(uid)">
+                com.uxin.zb.user.service.UserService.getUserInfoById
+            </option>
+            <option value="com.uxin.zb.user.service.UserService.checkIfAssistManager(anchorUid,uid)">
+                com.uxin.zb.user.service.UserService.checkIfAssistManager
+            </option>
+            <option value="com.uxin.zb.user.service.UserService.removeAssistManager(anchorUid,uid)">
+                com.uxin.zb.user.service.UserService.removeAssistManager
+            </option>
+            <option value="com.uxin.zb.user.service.UserService.isInForbidList(anchorUid,uid)">
+                com.uxin.zb.user.service.UserService.isInForbidList
+            </option>
+            <option value="com.uxin.zb.user.service.UserService.removeForbidUser(anchorUid,uid)">
+                com.uxin.zb.user.service.UserService.removeForbidUser
+            </option>
+        </optgroup>
+        <optgroup label="fans group">
+            <option value="com.uxin.zb.fans.group.service.FansGroupService.queryByUid(uid)">
+                com.uxin.zb.fans.group.service.FansGroupService.queryByUid
+            </option>
+            <option value="com.uxin.zb.fans.group.service.FansGroupMemberService.checkIfJoinFansGroup(anchorUid,uid)">
+                com.uxin.zb.fans.group.service.FansGroupMemberService.checkIfJoinFansGroup
+            </option>
+        </optgroup>
+    </select>
+
+    <input type="text" id="result" class="input">
+    <script>
+        $("#method").change(function (event) {
+            event.preventDefault();
+            $('#result').val("iv " + $('#method').val());
+        });
+    </script>
+</body>
+
+</html>
